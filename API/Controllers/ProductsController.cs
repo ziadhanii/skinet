@@ -14,7 +14,7 @@ namespace API.Controllers
 		[HttpGet]
 		public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(string? brand, string? type, string? sort)
 		{
-			var spec = new ProductSpecification(brand, type,sort);
+			var spec = new ProductSpecification(brand, type, sort);
 			var products = await repo.ListAsync(spec);
 			return Ok(products);
 		}
@@ -64,22 +64,27 @@ namespace API.Controllers
 			}
 			return BadRequest("Problem deleting product");
 		}
-		// [HttpGet("brands")]
-		// public async Task<ActionResult<IReadOnlyList<string>>> GetBrands()
-		// {
-		// 	// TODO : Implement Method
-		// 	return Ok();
-		// }
-		// [HttpGet("types")]
-		// public async Task<ActionResult<IReadOnlyList<string>>> GetTypes()
-		// {
-		// 	// TODO : Implement Method
-		// 	return Ok();
-		// }
+		[HttpGet("brands")]
+		public async Task<ActionResult<IReadOnlyList<string>>> GetBrands()
+		{
+
+			var spec = new BrandListSpecification();
+
+			var brands = await repo.ListAsync(spec);
+
+			return Ok(brands);
+
+		}
+		[HttpGet("types")]
+		public async Task<ActionResult<IReadOnlyList<string>>> GetTypes()
+		{
+			var spec = new TypeListSpecification();
+			var types = await repo.ListAsync(spec);
+			return Ok(types);
+		}
 
 		private bool ProductExists(int id)
 		{
 			return repo.Exists(id);
-		}
-	}
+		}	}
 }
