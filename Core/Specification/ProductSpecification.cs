@@ -1,6 +1,5 @@
 using Core.Entities;
 using Core.Specification;
-using Core.Specifications;
 
 public class ProductSpecification : BaseSpecification<Product>
 {

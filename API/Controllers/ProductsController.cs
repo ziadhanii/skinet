@@ -1,10 +1,3 @@
-using API.RequestHelpers;
-using Core.Entities;
-using Core.Interfaces;
-using Core.Specification;
-using Core.Specifications;
-using Microsoft.AspNetCore.Mvc;
-
 namespace API.Controllers;
 public class ProductsController(IGenericRepository<Product> repo) : BaseApiController
 

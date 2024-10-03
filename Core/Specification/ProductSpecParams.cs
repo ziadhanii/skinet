@@ -1,4 +1,4 @@
-namespace Core.Specifications
+namespace Core.Specification
 {
     public class ProductSpecParams
     {
