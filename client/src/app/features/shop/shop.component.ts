@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { ShopService } from '../../core/services/shop.service';
-import { MatCard } from '@angular/material/card';
 import { ProductItemComponent } from "./product-item/product-item.component";
 import { MatDialog } from '@angular/material/dialog';
 import { FiltersDialogComponent } from './filters-dialog/filters-dialog.component';
@@ -18,7 +17,6 @@ import { Product } from '../../shared/models/products';
   selector: 'app-shop',
   standalone: true,
   imports: [
-    MatCard,
     ProductItemComponent,
     MatButton,
     MatIcon,
@@ -36,14 +34,17 @@ import { Product } from '../../shared/models/products';
 export class ShopComponent {
   private shopService = inject(ShopService);
   private dialogService = inject(MatDialog);
+
   products?: Pagination<Product>;
+  shopParams = new ShopParams();
+  pageSizeOptions = [5, 10, 15, 20]
+
   sortOptions = [
     { name: 'Alphabetical', value: 'name' },
     { name: 'Price: Low-High', value: 'priceAsc' },
     { name: 'Price: High-Low', value: 'priceDesc' },
   ]
-  shopParams = new ShopParams();
-  pageSizeOptions = [5, 10, 15, 20]
+
 
   ngOnInit() {
     this.initializeShop();

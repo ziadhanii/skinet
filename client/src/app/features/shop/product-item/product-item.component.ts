@@ -20,5 +20,7 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './product-item.component.scss'
 })
 export class ProductItemComponent {
-@Input() product?: Product;
+
+  @Input() product?: Product;
+
 }
